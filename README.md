@@ -2,6 +2,7 @@
 Dice Game
 
 Author: Adam Dutson
+Main File: dice.py
 Course: CSE 210: Programming with Classes
 
 The game is played with five dice.

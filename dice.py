@@ -16,9 +16,6 @@ If the player does not roll any ones or fives the game is over.
 """
 
 import random
-roll_score = int(0)
-total_score = int(0)
-random.randint(1,6)
 
 class Roll:
     # A class for producing roll results
@@ -32,13 +29,13 @@ class Roll:
 
     def show_all_dice(dice):
         #Method to display the results of the dice roll
-        print(f'{dice.first_dice} {dice.second_dice} {dice.third_dice} {dice.fourth_dice} {dice.fifth_dice}')
-
+        print(f'You rolled: {dice.first_dice} {dice.second_dice} {dice.third_dice} {dice.fourth_dice} {dice.fifth_dice}')
 
 class Scoring:
     # A class for determining results and scoring for the Roll results
     def __init__(dice, number):
         dice.number = number
+        dice.score = int(0)
 
     def score_result(dice):
         if dice.number == 1:
@@ -48,4 +45,45 @@ class Scoring:
         else:
             dice.score = 0
 
-        
+def main():
+    roll_score = int(0)
+    total_score = int(0)
+    you_rolled = Roll()
+    print()
+    roll_dice = input('Roll dice? [y/n]: ')
+    while roll_dice == 'y':
+        #Generate random dice results and print results
+        you_rolled.first_dice = random.randint(1,6)
+        you_rolled.second_dice = random.randint(1,6)
+        you_rolled.third_dice = random.randint(1,6)
+        you_rolled.fourth_dice = random.randint(1,6)
+        you_rolled.fifth_dice = random.randint(1,6)
+        you_rolled.show_all_dice()
+        roll_score = int(0)
+        scoring = Scoring(you_rolled.first_dice)
+        scoring.score_result()
+        roll_score += scoring.score
+        scoring = Scoring(you_rolled.second_dice)
+        scoring.score_result()
+        roll_score += scoring.score
+        scoring = Scoring(you_rolled.third_dice)
+        scoring.score_result()
+        roll_score += scoring.score
+        scoring = Scoring(you_rolled.fourth_dice)
+        scoring.score_result()
+        roll_score += scoring.score
+        scoring = Scoring(you_rolled.fifth_dice)
+        scoring.score_result()
+        roll_score += scoring.score
+        if roll_score != 0:
+            total_score += roll_score
+            print(f'Your score is: {total_score}')
+            print()
+            roll_dice = input('Roll dice? [y/n]: ')
+        else:
+            roll_dice = 'n'
+            print('Your roll didn\'t score any points. The game is over.')
+            print()
+
+if __name__ == "__main__":
+    main()
