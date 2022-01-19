@@ -14,3 +14,23 @@ The player scores 50 points for each five that is rolled.
 The dice values and player score are displayed on the screen.
 If the player does not roll any ones or fives the game is over.
 """
+
+import random
+
+
+class Roll:
+    # A class for producing roll results
+    def __init__(dice):
+        #Constructor to get random dice results for 5 dice
+        dice.first_dice = random.randint(1,6)
+        dice.second_dice = random.randint(1,6)
+        dice.third_dice = random.randint(1,6)
+        dice.fourth_dice = random.randint(1,6)
+        dice.fifth_dice = random.randint(1,6)
+    def show_all_dice(dice):
+        #Method to display the results of the dice roll
+        print(f'{dice.first_dice} {dice.second_dice} {dice.third_dice} {dice.fourth_dice} {dice.fifth_dice}')
+
+
+class Score:
+    pass
