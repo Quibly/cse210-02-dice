@@ -16,21 +16,36 @@ If the player does not roll any ones or fives the game is over.
 """
 
 import random
-
+roll_score = int(0)
+total_score = int(0)
+random.randint(1,6)
 
 class Roll:
     # A class for producing roll results
     def __init__(dice):
         #Constructor to get random dice results for 5 dice
-        dice.first_dice = random.randint(1,6)
-        dice.second_dice = random.randint(1,6)
-        dice.third_dice = random.randint(1,6)
-        dice.fourth_dice = random.randint(1,6)
-        dice.fifth_dice = random.randint(1,6)
+        dice.first_dice = ""
+        dice.second_dice = ""
+        dice.third_dice = ""
+        dice.fourth_dice = ""
+        dice.fifth_dice = ""
+
     def show_all_dice(dice):
         #Method to display the results of the dice roll
         print(f'{dice.first_dice} {dice.second_dice} {dice.third_dice} {dice.fourth_dice} {dice.fifth_dice}')
 
 
-class Score:
-    pass
+class Scoring:
+    # A class for determining results and scoring for the Roll results
+    def __init__(dice, number):
+        dice.number = number
+
+    def score_result(dice):
+        if dice.number == 1:
+            dice.score = 100
+        elif dice.number == 5:
+            dice.score = 50
+        else:
+            dice.score = 0
+
+        
